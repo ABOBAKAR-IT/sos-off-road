@@ -1,19 +1,48 @@
 const {create,update,findall,findone,del}=require('../3_services/sos_services')
 
-module.exports.create=(req,res)=>{
-
+module.exports.create=async(req,res)=>{
+    try {
+        let data=await create(req.body)
+        res.send(data)
+        
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-module.exports.update=(req,res)=>{
-
+module.exports.update=async(req,res)=>{
+    try {
+    let data=await update(req.body)
+    res.send(data)
+    
+} catch (error) {
+    console.log(error);
 }
-module.exports.findall=(req,res)=>{
-
 }
-module.exports.findone=(req,res)=>{
-
+module.exports.findall=async(req,res)=>{
+    try {
+    let data=await findall(req.body)
+    res.send(data)
+    
+} catch (error) {
+    console.log(error);
+}
+}
+module.exports.findone=async(req,res)=>{
+    try {
+    let data=await findone(req.body)
+    res.send(data)
+    
+} catch (error) {
+    console.log(error);
+}
 }
 
-module.exports.del=(req,res)=>{
-
+module.exports.del=async(req,res)=>{
+    try {
+    let data=await del(req.body)
+    res.send(data)
+} catch (error) {
+    console.log(error);
+}
 }
