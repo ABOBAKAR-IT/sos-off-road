@@ -10,7 +10,7 @@ location:sequelize.STRING,
 user_name:sequelize.STRING,
 experte_level:sequelize.STRING,
 avalbility:sequelize.BOOLEAN,
-legel_id_doc:sequelize.ARRAY
+legel_id_doc:sequelize.ARRAY(sequelize.ENUM)
 
 })
 module.exports=rescures

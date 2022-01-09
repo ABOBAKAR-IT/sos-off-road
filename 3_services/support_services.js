@@ -1,4 +1,4 @@
-const support = require("../4_models/support");
+const support = require("../4_models/support_model");
 module.exports.create = async (body) => {
   try {
     const data = await support.create({
