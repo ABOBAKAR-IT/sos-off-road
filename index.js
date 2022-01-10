@@ -9,6 +9,7 @@ const applicationRouter=require('./1_router/applications_routes')
 const casesRouter=require('./1_router/cases_routes')
 const rescuresRouter=require('./1_router/rescurs_routes')
 const supportRouter=require('./1_router/support_routes')
+const relationship=require('./relationship')
 app.use("/admin",adminRouter)
 app.use('/user',userRouter)
 app.use('/sos',sosRouter)
@@ -23,7 +24,7 @@ res.send("hello werd")
 // authenticate
 database.authenticate().then(() => {
     console.log("database connected:");
-    database.sync({force:true}).then(()=>{
+    database.sync({force:true,alter:false}).then(()=>{
         console.log("create table");
     }).catch((err)=>{
         console.log(err);
