@@ -1,6 +1,6 @@
 const sequelize=require('sequelize')
 const database=require('../database')
-const rescures=database.define("tb_rescuress",{
+const rescures=database.define("tb_rescures",{
 name:sequelize.STRING,
 age:sequelize.NUMBER,
 car_model:sequelize.STRING,

@@ -23,7 +23,7 @@ res.send("hello werd")
 // authenticate
 database.authenticate().then(() => {
     console.log("database connected:");
-    database.sync({force:false}).then(()=>{
+    database.sync({force:true}).then(()=>{
         console.log("create table");
     }).catch((err)=>{
         console.log(err);
