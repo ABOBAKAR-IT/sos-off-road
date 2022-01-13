@@ -2,7 +2,11 @@ const sos = require("../4_models/sos_model");
 module.exports.create = async (body) => {
   try {
     const data = await sos.create({
-      name: body.name,
+      name:body.name,
+phone_number:body.STRING,
+Description:body.Description,
+location:body.location,
+picture_of_case:body.picture_of_case
     });
     return data;
   } catch (error) {
