@@ -15,6 +15,8 @@ location:sequelize.STRING,
 user_name:sequelize.STRING,
 experte_level:sequelize.STRING,
 avalbility:sequelize.BOOLEAN,
-legel_id_doc:sequelize.STRING,
+legel_id_doc_1:sequelize.STRING,
+legel_id_doc_2:sequelize.STRING,
+
 })
 module.exports=rescures
