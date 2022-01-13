@@ -1,3 +1,6 @@
+const path=require('path')
+const file_uploader = require('express-fileupload')
+
 const {create,update,findall,findone,del}=require('../3_services/sos_services')
 
 module.exports.create=async(req,res)=>{
@@ -45,4 +48,13 @@ module.exports.del=async(req,res)=>{
 } catch (error) {
     console.log(error);
 }
+}
+
+
+
+async function fileuplaod(file1,file2){
+    var  samplefile=file1;
+    samplefile.name=await file1.fieldname + "-" + Date.now() + path.extname(file1.originalname);
+    var  upload_dir='./upload/'+samplefile.name;
+    await samplefile.mv(upload_dir)
 }
