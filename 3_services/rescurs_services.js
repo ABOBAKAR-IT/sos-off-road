@@ -2,7 +2,17 @@ const rescure = require("../4_models/rescurs_model");
 module.exports.create = async (body) => {
   try {
     const data = await rescure.create({
-      name: body.name,
+      name:body.name,
+    age:body.age,
+    car_model:body.car_model,
+car_number:body.car_number,
+equipment:body.equipment,
+location:body.location,
+user_name:body.user_name,
+experte_level:body.experte_level,
+avalbility:body.avalbility,
+legel_id_doc_1:body.legel_id_doc_1,
+legel_id_doc_2:body.legel_id_doc_2,
     });
     return data;
   } catch (error) {

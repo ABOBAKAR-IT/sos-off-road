@@ -1,10 +1,15 @@
 const {create,update,findall,findone,del}=require('../3_services/rescurs_services')
-
+const {uploadOnCloudinary}=require('./file_upload')
 module.exports.create=async(req,res)=>{
     try {
-        let data=await create(req.body)
-        res.send(data)
-        
+        let body=req.body
+let file=req.files
+  let data1= await  uploadOnCloudinary(file[0])
+  let data2= await  uploadOnCloudinary(file[1])
+       body.legel_id_doc_1=data1     
+        body.legel_id_doc_2=data2
+      var data=await create(body)
+      res.send(data)
     } catch (error) {
         console.log(error);
     }
@@ -14,7 +19,6 @@ module.exports.update=async(req,res)=>{
     try {
     let data=await update(req.body)
     res.send(data)
-    
 } catch (error) {
     console.log(error);
 }
