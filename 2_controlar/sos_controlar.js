@@ -4,25 +4,24 @@ const multer=require('multer')
 app=express()
 app.use(express.json())
 const {create,update,findall,findone,del}=require('../3_services/sos_services')
-
+const {uploadOnCloudinary}=require('./file_upload')
 module.exports.create=async(req,res)=>{
     try {
-      var data=  req.file
-        console.log(data);
-        if(!req.file){
-            res.status(400)
-            res.send("Upload A File!")
-            return
-        }
-        var  samplefile=data
-        console.log(samplefile);
-      //await fileuplaod(samplefile)
-
-        // let data=await create(req.body)
-        res.send("done")
+     let body=req.body
+     console.log(req.files);
+let file=req.files
+console.log("file "+ file[0].path);
+  let data1= await  uploadOnCloudinary(file[0])
+       body.picture_of_case_1=data1
+       if(file[1]!=undefined){
+  let data2= await  uploadOnCloudinary(file[1])
+        body.picture_of_case_2=data2
+       }
+      var data=await create(body)
+      res.send(data)
         
     } catch (error) {
-        console.log(error);
+        console.log("error: "+error);
     }
 }
 
@@ -63,15 +62,15 @@ module.exports.del=async(req,res)=>{
 }
 }
 
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, "uploads");
-    },
-    filename: function (req, file, cb) {
-      cb(
-        null,
-        file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-      );
-    },
-  });
- module.exports.upload = multer({ storage: storage });
+// var storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//       cb(null, "uploads");
+//     },
+//     filename: function (req, file, cb) {
+//       cb(
+//         null,
+//         file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+//       );
+//     },
+//   });
+//  module.exports.upload = multer({ storage: storage });

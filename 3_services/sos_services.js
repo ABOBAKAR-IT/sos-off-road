@@ -6,7 +6,7 @@ module.exports.create = async (body) => {
 phone_number:body.STRING,
 Description:body.Description,
 location:body.location,
-picture_of_case:body.picture_of_case
+picture_of_case:body.picture_of_case_1
     });
     return data;
   } catch (error) {
