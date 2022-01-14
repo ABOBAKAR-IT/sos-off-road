@@ -1,6 +1,8 @@
 const express=require('express');
 const app=express();
 app.use(express.json());
+// app.use(express.static('public'))
+
 const database=require('./database')
 const adminRouter=require('./1_router/admin_routes')
 const userRouter=require('./1_router/users_routes')
@@ -10,6 +12,14 @@ const casesRouter=require('./1_router/cases_routes')
 const rescuresRouter=require('./1_router/rescurs_routes')
 const supportRouter=require('./1_router/support_routes')
 const relationship=require('./relationship')
+// app.use((req, res, next) => {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header(
+//       "Access-Control-Allow-Headers",
+//       "Origin, X-Requested-With, Content-Type, Accept"
+//     );
+//     next();
+//   });
 app.use("/admin",adminRouter)
 app.use('/user',userRouter)
 app.use('/sos',sosRouter)

@@ -1,9 +1,7 @@
 const express = require('express')
 const path=require('path')
-const file_uploader = require('express-fileupload')
 const multer=require('multer')
 app=express()
-app.use(file_uploader())
 app.use(express.json())
 const {create,update,findall,findone,del}=require('../3_services/sos_services')
 
@@ -16,7 +14,7 @@ module.exports.create=async(req,res)=>{
             res.send("Upload A File!")
             return
         }
-        var  samplefile=req.body.name
+        var  samplefile=data
         console.log(samplefile);
       //await fileuplaod(samplefile)
 
@@ -65,11 +63,15 @@ module.exports.del=async(req,res)=>{
 }
 }
 
-
-
-async function fileuplaod(file1,file2){
-    var  samplefile=file1;
-    samplefile.name=await file1.fieldname + "-" + Date.now() + path.extname(file1.originalname);
-    var  upload_dir='../uploads/'+samplefile.name;
-    await samplefile.mv(upload_dir)
-}
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, "uploads");
+    },
+    filename: function (req, file, cb) {
+      cb(
+        null,
+        file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+      );
+    },
+  });
+ module.exports.upload = multer({ storage: storage });
