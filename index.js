@@ -17,14 +17,14 @@ app.use('/application',applicationRouter)
 app.use('/case',casesRouter)
 app.use('/rescure',rescuresRouter)
 app.use('/support',supportRouter)
-const port=9100;
+const port=9000;
 app.get("/",(req,res)=>{
 res.send("hello werd")
 })
 // authenticate
 database.authenticate().then(() => {
     console.log("database connected:");
-    database.sync({force:true}).then(()=>{
+    database.sync({force:false,alter:true}).then(()=>{
         console.log("create table");
     }).catch((err)=>{
         console.log(err);
