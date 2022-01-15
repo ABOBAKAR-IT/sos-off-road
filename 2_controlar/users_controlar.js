@@ -1,4 +1,4 @@
-const {create,update,findall,findone,del}=require('../3_services/users_services')
+const {create,update,findall,findone,del,login,signup}=require('../3_services/users_services')
 
 module.exports.create=async(req,res)=>{
     try {
@@ -45,4 +45,20 @@ module.exports.del=async(req,res)=>{
 } catch (error) {
     console.log(error);
 }
+}
+module.exports.login=async(req,res)=>{
+    try {
+        let data=await login(req.body)
+        res.send(data)
+    } catch (error) {
+        
+    }
+}
+module.exports.signup=async(req,res)=>{
+    try {
+        let data=await signup(req.body)
+    res.send(data)
+    } catch (error) {
+        
+    }
 }

@@ -1,8 +1,12 @@
 const users = require("../4_models/users_model");
+const {Op}=require('sequelize')
+
 module.exports.create = async (body) => {
   try {
     const data = await users.create({
       name: body.name,
+      email:body.email,
+      password:body.password
     });
     return data;
   } catch (error) {
@@ -46,3 +50,31 @@ module.exports.del = async (body) => {
     console.log(error);
   }
 };
+module.exports.login=async(body)=>{
+  try {
+    console.log("user");
+   let data=await users.findAll({
+      where: {
+        [Op.and]: [
+          { email: body.email },
+          { password:body.password }
+        ]
+      }
+    });
+    return data
+  } catch (error) {
+    
+  }
+}
+module.exports.signup=async(body)=>{
+  try {
+    const data = await users.create({
+      name: body.name,
+      email:body.email,
+      password:body.password
+    });
+    return data;
+  } catch (error) {
+      
+  }
+}
