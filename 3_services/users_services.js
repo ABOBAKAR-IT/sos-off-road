@@ -6,7 +6,8 @@ module.exports.create = async (body) => {
     const data = await users.create({
       name: body.name,
       email:body.email,
-      password:body.password
+      password:body.password,
+      type:body.type
     });
     return data;
   } catch (error) {

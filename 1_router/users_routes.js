@@ -1,11 +1,19 @@
-const {create,update,findall,findone,del,login,signup}=require('../2_controlar/users_controlar')
-const express=require('express')
-const userouter=express.Router()
-userouter.post('/create',create)
-userouter.post('/update',update)
-userouter.get('/findall',findall)
-userouter.get('/findone',findone)
-userouter.get('/del',del)
-userouter.post('/login',login)
-userouter.post('/signup',signup)
-module.exports=userouter
+const {
+    create,
+    update,
+    findall,
+    findone,
+    del,
+    login,
+    signup
+} = require('../2_controlar/users_controlar')
+const express = require('express')
+const userouter = express.Router()
+userouter.post('/create', create)
+userouter.post('/update', update)
+userouter.get('/findall', findall)
+userouter.get('/findone', findone)
+userouter.get('/del', del)
+userouter.post('/login', login)
+userouter.post('/signup', signup)
+module.exports = userouter

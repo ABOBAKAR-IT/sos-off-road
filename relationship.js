@@ -1,10 +1,10 @@
-const ADMIN =require('./4_models/admin_model')
-const USER=require('./4_models/users_model')
-const RESCURE=require('./4_models/rescurs_model')
-const APPLICATION=require('./4_models/applications_model')
-const SOS=require('./4_models/sos_model')
-const CASES=require('./4_models/cases_model')
-const SUPPORT=require('./4_models/support_model')
+const ADMIN = require('./4_models/admin_model')
+const USER = require('./4_models/users_model')
+const RESCURE = require('./4_models/rescurs_model')
+const APPLICATION = require('./4_models/applications_model')
+const SOS = require('./4_models/sos_model')
+const CASES = require('./4_models/cases_model')
+const SUPPORT = require('./4_models/support_model')
 
 
 USER.hasOne(ADMIN)

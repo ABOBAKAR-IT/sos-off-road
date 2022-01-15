@@ -1,10 +1,18 @@
-const {create,update,findall,findone,del}=require('../2_controlar/rescurs_controlar')
-const {upload}=require('../2_controlar/file_upload')
-const express=require('express')
-const rescuresRouter=express.Router()
-rescuresRouter.post('/create',upload.array('myFile'),create)
-rescuresRouter.post('/update',update)
-rescuresRouter.get('/findall',findall)
-rescuresRouter.get('/findone',findone)
-rescuresRouter.get('/del',del)
-module.exports=rescuresRouter
+const {
+    create,
+    update,
+    findall,
+    findone,
+    del
+} = require('../2_controlar/rescurs_controlar')
+const {
+    upload
+} = require('../2_controlar/file_upload')
+const express = require('express')
+const rescuresRouter = express.Router()
+rescuresRouter.post('/create', upload.array('myFile'), create)
+rescuresRouter.post('/update', update)
+rescuresRouter.get('/findall', findall)
+rescuresRouter.get('/findone', findone)
+rescuresRouter.get('/del', del)
+module.exports = rescuresRouter
