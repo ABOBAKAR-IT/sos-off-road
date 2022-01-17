@@ -2,7 +2,9 @@ const application = require("../4_models/applications_model");
 module.exports.create = async (body) => {
   try {
     const data = await application.create({
-      name: body.name,
+      application_status:"working",
+      tbRescureId:body.id,
+      tbAdminId:"1"
     });
     return data;
   } catch (error) {

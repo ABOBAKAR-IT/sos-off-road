@@ -7,6 +7,7 @@ const {
 } = require("../3_services/rescurs_services");
 const user=require('../3_services/users_services')
 const {uploadOnCloudinary} = require("./file_upload");
+const ap= require('../3_services/applications_services')
 module.exports.create = async (req, res) => {
     try {
         let body = req.body;
@@ -16,9 +17,11 @@ module.exports.create = async (req, res) => {
         body.legel_id_doc_1 = data1;
         body.legel_id_doc_2 = data2;
         var data = await create(body);
-      
       await  user.create(req.body)
-        res.send(data);
+      let apadd={}
+      apadd.id=data.id
+      await  ap.create(apadd)
+      res.send(data);
     } catch (error) {
         console.log(error);
     }

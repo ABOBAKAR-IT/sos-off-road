@@ -4,6 +4,7 @@ const {
     findall,
     findone,
     del,
+    findallapplication
 } = require("../3_services/admin_services");
 
 module.exports.create = async (req, res) => {
@@ -48,3 +49,11 @@ module.exports.del = async (req, res) => {
         console.log(error);
     }
 };
+module.exports.findallapplication = async (req,res) => {
+    try {
+        let data=await findallapplication(req.body)
+     res.send(data)
+    } catch (error) {
+      console.log(error);
+    }
+  };
