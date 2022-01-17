@@ -27,7 +27,7 @@ app.use('/application', applicationRouter)
 app.use('/case', casesRouter)
 app.use('/rescure', rescuresRouter)
 app.use('/support', supportRouter)
-const port = 9001;
+const port = 9136;
 app.get("/", (req, res) => {
     res.send("hello werd")
 })
