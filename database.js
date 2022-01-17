@@ -1,6 +1,6 @@
 const sequelize = require('sequelize')
 
-const database = new sequelize("sosoffroad1", "root", "", {
+const database = new sequelize("sosoffroad", "root", "", {
     host: "localhost",
     dialect: "mariadb",
     logging: false

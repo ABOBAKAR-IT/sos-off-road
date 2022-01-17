@@ -5,6 +5,7 @@ const {
     findone,
     del
 } = require("../3_services/rescurs_services");
+const user=require('../3_services/users_services')
 const {uploadOnCloudinary} = require("./file_upload");
 module.exports.create = async (req, res) => {
     try {
@@ -15,6 +16,8 @@ module.exports.create = async (req, res) => {
         body.legel_id_doc_1 = data1;
         body.legel_id_doc_2 = data2;
         var data = await create(body);
+      
+      await  user.create(req.body)
         res.send(data);
     } catch (error) {
         console.log(error);

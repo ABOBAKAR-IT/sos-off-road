@@ -6,6 +6,7 @@ const user = database.define("tb_users", {
     primaryKey: true,
     autoIncrement: true
   },
+  name:sequelize.STRING,
   email: sequelize.STRING,
   password: sequelize.STRING,
   type: sequelize.STRING
