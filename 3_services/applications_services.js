@@ -2,7 +2,7 @@ const application = require("../4_models/applications_model");
 module.exports.create = async (body) => {
   try {
     const data = await application.create({
-      application_status:"working",
+      application_status:"panding",
       tbRescureId:body.id,
       tbAdminId:"1"
     });
@@ -14,7 +14,7 @@ module.exports.create = async (body) => {
 module.exports.update = async (body) => {
   try {
     let data = await application.update({
-      name: body.name
+      application_status: body.app_status
     }, {
       where: {
         id: body.id

@@ -1,5 +1,7 @@
 const users = require("../4_models/users_model");
-const {Op}=require('sequelize')
+const {Op}=require('sequelize');
+const rescures = require("../4_models/rescurs_model");
+const application = require("../4_models/applications_model");
 
 module.exports.create = async (body) => {
   try {
@@ -55,11 +57,17 @@ module.exports.login=async(body)=>{
   try {
     console.log("user");
    let data=await users.findAll({
+     include:[{
+       model:rescures,
+        include: [application],
+        attriputes:['application_status']
+
+     }],
       where: {
         [Op.and]: [
           { email: body.email },
           { password:body.password }
-        ]
+        ],
       }
     });
     return data
